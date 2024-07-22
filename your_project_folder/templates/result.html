@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="your_project_folder/static/StyleSheet.css">
+    <title>Stress Level Result</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Predicted Stress Level</h2>
+        <div class="result-box">
+            <p id="stressLevel"></p>
+        </div>
+        <div class="button-container">
+            <a href="/" class="button">Go Back</a>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const stressLevel = urlParams.get('stress_level');
+        document.getElementById('stressLevel').innerText = `Predicted Stress Level: ${stressLevel}`;
+    </script>
+</body>
+</html>

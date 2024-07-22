@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Web Page</title>
+    <link rel="stylesheet" href="set3.css">
+    <style>
+        /* Set the size of the frames */
+        .frame-container {
+            display: flex;
+            flex-direction: column; /* Set the direction to column for vertical layout */
+            height: 100vh; /* Adjust as needed */
+        }
+
+        /* Style the top frame */
+        .top-frame {
+            height: 33%;
+            background-color: #6d127d13;
+            border-bottom: 1px solid #540f606c; /* Add a border between frames */
+        }
+
+        /* Style the bottom frame */
+        .bottom-frame {
+            height: 70%;
+            background-color: #941e8c84;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Style for image buttons */
+        .image-button-container {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+        }
+
+        .image-button-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-button {
+            width: 100px; /* Adjust size as needed */
+            height: 100px; /* Adjust size as needed */
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .image-button:hover {
+            border-color: #540f606c;
+        }
+
+        .input-text {
+            margin-top: 10px;
+            width: 100px; /* Match the width of the image button */
+        }
+
+        /* Reset default margin and padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame-container">
+        <!-- Top Frame -->
+        <div class="top-frame">
+            <!-- Content for the top frame -->
+            <h2>Hi Disha</h2>
+        </div>
+
+        <!-- Bottom Frame -->
+        <div class="bottom-frame">
+            <!-- Content for the bottom frame -->
+            <h2>Physiological Inputs</h2>
+            <div class="image-button-container">
+                <div class="image-button-wrapper">
+                    <img src="images.png" alt="Button 1" class="image-button" onclick="handleClick('Button 1')">
+                    <input type="text" class="input-text" placeholder="Oxygen Level">
+                </div>
+                <div class="image-button-wrapper">
+                    <img src="3d-realistic-violet-heart-with-white-pulse-for-medical-apps-and-websites-medical-healthcare-concept-heart-pulse-heartbeat-line-cardiogram-illustration-vector.jpg" alt="Button 2" class="image-button" onclick="handleClick('Button 2')">
+                    <input type="text" class="input-text" placeholder="Heart Rate">
+                </div>
+                <div class="image-button-wrapper">
+                    <img src="image.png" alt="Button 3" class="image-button" onclick="handleClick('Button 3')">
+                    <input type="text" class="input-text" placeholder="BodyTemp.">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleClick(buttonName) {
+            alert(buttonName + ' clicked!');
+            // Add more functionality here
+        }
+    </script>
+</body>
+</html>

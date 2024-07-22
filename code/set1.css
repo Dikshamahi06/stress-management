@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #e6e6fa, #dda0dd);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login {
+    border: 1px solid black;
+    width: 500px;
+    height: 600px;
+    background: url("bg.jpg") center/cover; /* Ensure this path is correct */
+    color: aliceblue;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+    position: relative;
+}
+
+.login:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: brightness(40%);
+}
+
+/* set1.css */
+
+h1 {
+    font-weight: bold;
+    font-size: 36px; /* Adjusted font size */
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* Adding text shadow for effect */
+    margin-bottom: 30px; /* Adjust margin as needed */
+    text-align: center;
+    text-transform: uppercase;
+    color: #e4a4f49d; /* Adjusted color */
+}
+
+
+label {
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.3);
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    padding: 0 20px;
+    border: none;
+    color: white;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+input:focus {
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.02);
+}
+
+button {
+    background: rgb(168, 60, 195);
+    height: 40px;
+    line-height: 40px;
+    border-radius: 40px;
+    border: none;
+    margin-top: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: rgb(139, 29, 168);
+    transform: scale(1.05);
+}
+
+@media (max-width: 500px) {
+    .login {
+        width: 90%;
+        max-width: 400px;
+        height: auto;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    input, button {
+        height: 35px;
+        line-height: 35px;
+    }
+}

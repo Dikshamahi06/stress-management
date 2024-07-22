@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Loading Page</title>
+<link rel="stylesheet" href="frontstyle.css">
+<script>
+    // JavaScript function to redirect after 5 seconds
+    function redirectToLogin() {
+        setTimeout(function() {
+            window.location.href = 'index.html';
+        }, 4000); // 4 seconds
+    }
+
+    // Call the function when the page loads
+    window.onload = redirectToLogin;
+</script>
+</head>
+<body>
+    <div class="container loader">
+        <span>W</span>
+        <span>E</span>
+        <span>L</span>
+        <span>C</span>
+        <span>O</span>
+        <span>M</span>
+        <span>E</span>
+    </div>
+</body>
+</html>

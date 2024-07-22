@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-End to Back-End Example</title>
+</head>
+<body>
+    <h1>Simple Form</h1>
+    <form id="myForm">
+        <label for="inputData">Enter Data:</label>
+        <input type="text" id="inputData" name="inputData" required>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const inputData = document.getElementById('inputData').value;
+            const response = await fetch('http://localhost:5000/api/process', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data: inputData }),
+            });
+            const result = await response.json();
+            document.getElementById('result').textContent = result.output;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physiological Inputs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lobster&display=swap&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Styles as provided */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #e6e6fa, #dda0dd);
+            color: #ba2ebd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .frame-container {
+            display: flex;
+            flex-direction: column;
+            width: 95%;
+            max-width: 1200px;
+            height: 100vh;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            background: #ffffffd1;
+            backdrop-filter: blur(10px);
+            animation: float 6s ease-in-out infinite;
+        }
+        .top-frame {
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #d8bfd8;
+            border-bottom: 1px solid #4b00824a;
+        }
+        .top-frame h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            color: #4b0082;
+            animation: fadeIn 2s ease-in;
+        }
+        .bottom-frame {
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .bottom-frame h5 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 10px 0 20px 0;
+            color: #4b0082;
+            animation: fadeIn 2s ease-in;
+        }
+        .image-button-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .image-button-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 10px;
+        }
+        .image-button {
+            width: 70px;
+            height: 70px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        .image-button:hover {
+            transform: scale(1.1);
+            border-color: #4b0082;
+            box-shadow: 0 0 15px rgba(75, 0, 130, 0.5);
+        }
+        .input-text {
+            margin-top: 5px;
+            width: 100px;
+            padding: 10px;
+            border: 1px solid #4b0082;
+            border-radius: 5px;
+            text-align: center;
+            outline: none;
+            color: #4b0082;
+            background: #f8f8ff;
+        }
+        .input-text::placeholder {
+            color: #4c0082f0;
+        }
+        .prediction-result {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4b0082;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-all;
+            hyphens: auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form button {
+            font-family: 'Lobster', cursive;
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            background-color: #4b0082;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        form button:hover {
+            background-color: #7f00ff;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(127, 0, 255, 0.5);
+        }
+        #result {
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4b0082;
+            animation: fadeIn 2s ease-in;
+        }
+        /* .form-result-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 20px;
+        } */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="frame-container">
+        <div class="top-frame">
+            <h2 id="welcomeMessage">Hi</h2>
+        </div>
+        <div class="bottom-frame">
+            <h5>Physiological Inputs</h5>
+            <div class="form-result-container">
+                <form id="dataForm">
+                    <div class="image-button-container">
+                        <div class="image-button-wrapper">
+                            <img src="Untitled.jpg" alt="Age" class="image-button" onclick="handleClick('Age')">
+                            <input type="text" id="age" class="input-text" placeholder="Age">
+                        </div>
+                        <div class="image-button-wrapper">
+                            <img src="b3336cce03484a589217c425fa6b2686.jpg" alt="Gender" class="image-button" onclick="handleClick('Gender')">
+                            <input type="text" id="gender" class="input-text" placeholder="Gender (Male/Female)">
+                        </div>
+                        <div class="image-button-wrapper">
+                            <img src="image copy 2.png" alt="Body Temperature" class="image-button" onclick="handleClick('Body Temperature')">
+                            <input type="text" id="bodyTemp" class="input-text" placeholder="Body Temp.">
+                        </div>
+                        <div class="image-button-wrapper">
+                            <img src="image.png" alt="Oxygen Level" class="image-button" onclick="handleClick('Oxygen Level')">
+                            <input type="text" id="oxygenLevel" class="input-text" placeholder="Oxygen Level">
+                        </div>
+                        <div class="image-button-wrapper">
+                            <img src="image copy.png" alt="Heart Rate" class="image-button" onclick="handleClick('Heart Rate')">
+                            <input type="text" id="heartRate" class="input-text" placeholder="Heart Rate">
+                        </div>    
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+                <div id="result"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        window.onload = function() {
+            const username = getQueryParam('username');
+            if (username) {
+                document.getElementById('welcomeMessage').textContent = `Hi ${username}`;
+            }
+        };
+
+        document.getElementById('dataForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const bodyTemp = document.getElementById('bodyTemp').value;
+            const oxygenLevel = document.getElementById('oxygenLevel').value;
+            const heartRate = document.getElementById('heartRate').value;
+    
+            try {
+                const response = await fetch('http://localhost:5000/api/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ age, gender, bodyTemp, oxygenLevel, heartRate }),
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+    
+                const result = await response.json();
+                document.getElementById('result').textContent = 'Predicted Stress Level: ' + result.stress_level;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('result').textContent = 'Failed to fetch data. Please try again later.';
+            }
+        });
+    </script>    
+</body>
+</html>

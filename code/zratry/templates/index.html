@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Level Predictor</title>
+</head>
+<body>
+    <h1>Stress Level Predictor</h1>
+    <form id="predictForm">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+        <label for="gender">Gender (Male/Female):</label>
+        <input type="text" id="gender" name="gender" required><br><br>
+        <label for="body_temp">Body Temperature (°F):</label>
+        <input type="number" step="0.1" id="body_temp" name="body_temp" required><br><br>
+        <label for="oxygen_level">Oxygen Level (%):</label>
+        <input type="number" step="0.1" id="oxygen_level" name="oxygen_level" required><br><br>
+        <label for="heart_rate">Heart Rate (bpm):</label>
+        <input type="number" id="heart_rate" name="heart_rate" required><br><br>
+        <button type="submit">Predict Stress Level</button>
+    </form>
+    <p id="result"></p>
+    <p id="error" style="color:red;"></p>
+    <script>
+        document.getElementById('predictForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const body_temp = document.getElementById('body_temp').value;
+            const oxygen_level = document.getElementById('oxygen_level').value;
+            const heart_rate = document.getElementById('heart_rate').value;
+
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    age: age,
+                    gender: gender,
+                    body_temp: body_temp,
+                    oxygen_level: oxygen_level,
+                    heart_rate: heart_rate
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('error').innerText = 'Error: ' + data.error;
+                } else {
+                    document.getElementById('result').innerText = 'Predicted Stress Level: ' + data.predicted_stress;
+                    document.getElementById('error').innerText = '';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('error').innerText = 'An error occurred. Please try again.';
+            });
+        });
+    </script>
+</body>
+</html>

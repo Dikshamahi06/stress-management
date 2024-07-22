@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/your_project_folder/static/StyleSheet.css">
+    <title>Stress Level Prediction</title>
+</head>
+<body>
+    <div class="container">
+        <form id="stressForm">
+            <h2>Hi</h2>
+            <div class="content">
+                <div class="input-box">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" placeholder="Enter age" name="age" required>
+                </div>
+                <div class="input-box">
+                    <label for="gender">Gender</label>
+                    <input type="text" id="gender" placeholder="Enter gender" name="gender" required>
+                </div>
+                <div class="input-box">
+                    <label for="bodyTemp">Body Temperature</label>
+                    <input type="number" id="bodyTemp" placeholder="Enter body temperature" name="bodyTemp" required>
+                </div>
+                <div class="input-box">
+                    <label for="oxygenLevel">Oxygen Level</label>
+                    <input type="number" id="oxygenLevel" placeholder="Enter oxygen level" name="oxygenLevel" required>
+                </div>
+                <div class="input-box">
+                    <label for="heartRate">Heart Rate</label>
+                    <input type="number" id="heartRate" placeholder="Enter heart rate" name="heartRate" required>
+                </div>
+            </div>
+            <div class="alert">
+                <p>By clicking submit, you will get your stress level prediction.</p>
+            </div>
+            <div class="button-container">
+                <button type="submit"><a href="result.html">Submit</a></button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('stressForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const bodyTemp = document.getElementById('bodyTemp').value;
+            const oxygenLevel = document.getElementById('oxygenLevel').value;
+            const heartRate = document.getElementById('heartRate').value;
+            
+            fetch('/api/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    age: age,
+                    gender: gender,
+                    bodyTemp: bodyTemp,
+                    oxygenLevel: oxygenLevel,
+                    heartRate: heartRate
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                window.location.href = `/result?stress_level=${data.stress_level.toFixed(2)}`;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
